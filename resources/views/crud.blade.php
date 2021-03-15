@@ -110,7 +110,6 @@
 </div> <!-- container -->
 
 
-Modal Create
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -162,9 +161,9 @@ Modal Create
                                 <div class="form-group">
                                     <label>User-Id</label>
                                     <div>
-                                        <input name="user_id" type="hidden" class="form-control" value="{{$post->user_id}}" required />
+                                        <input name="user_id" type="hidden" value="{{$id}}" class="form-control" value="" required />
                                     </div>
-                                    <label >{{$post->user_id}}</label>
+                                    <label >{{$id}}</label>
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
@@ -261,7 +260,7 @@ Modal Create
 
                             <!-- </p> -->
 
-                            <form action="{{route('update',$post->id)}}" method="POST" class="parsley-examples">
+                            <form action="{{route('update')}}" method="POST" class="parsley-examples">
                                 @csrf
                                 <!-- {{method_field('PUT')}} -->
                                 <div class="form-group">

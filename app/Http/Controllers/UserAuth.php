@@ -28,7 +28,9 @@ class UserAuth extends Controller
         $data=$req->input();
         $req->session()->put('email',$data['email']);
 
-        return redirect('crud');
+        $_id=$checkLogin[0]->id;
+
+        return redirect("crud/$_id");
         // echo session('email');
 
         }

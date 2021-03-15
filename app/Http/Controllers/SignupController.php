@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\DB;
 
 class SignupController extends Controller
 {
@@ -18,6 +19,7 @@ class SignupController extends Controller
             'confirm_password' => 'required_with:password|same:password|min:3'
         ]);
         $user=new User();
+
     $user->name=$req->input('name');
         $user->email=$req->input('email');
         $user->password=$req->input('password');
@@ -25,7 +27,10 @@ class SignupController extends Controller
         $user->save();
         $data=$req->input();
         $req->session()->put('email',$data['email']);
-        return redirect('crud');
+        $id=DB::table('users')->where(['email'=>$req->email,'password'=>$req->password])->get();
+        $user_id=$id[0]->id;
+
+        return redirect("crud/$user_id");
         
     }
 }

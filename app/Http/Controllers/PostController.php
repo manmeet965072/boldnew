@@ -22,7 +22,7 @@ class PostController extends Controller
         // ]);
         $posts=Post::where('user_id','=',$id)->get();
         //$posts = Post::all();
-        return view('crud', compact('posts'));
+        return view('crud', ['posts'=>$posts,'id'=>$id]);
     }
 
     /**
@@ -96,7 +96,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
         $this->validate($request, [
